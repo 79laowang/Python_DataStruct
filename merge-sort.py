@@ -23,12 +23,14 @@
 # Optimal time complexity: O(nlogn)
 #
 
+from __future__ import print_function
+
 def merge_sort(alist):
     """merge sort stable"""
     n = len(alist)
     if n <= 1:
         return alist
-    mid = n/2
+    mid = int(n/2)
 
     # return new sorted left list
     left_list = merge_sort(alist[:mid])
@@ -53,9 +55,9 @@ def merge_sort(alist):
 
 def main():
     list1 = [23,34,65,77,84,37,98,12,9,34]
-    print list1
+    print(list1)
     sorted_list = merge_sort(list1)
-    print sorted_list
+    print(sorted_list)
 
 if __name__ == '__main__':
     main()
