@@ -10,17 +10,18 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 
-##demonstration:
-## 将两个或两个以上的有序表组合成一个新的有序表的方法叫归并。
-##假设初始序列含有n个记录，则可看成是n个有序的子序列，每个子序列的长度为1，
-##然后两两归并，得到n/2个长度为2或1的有序子序列；再两两归并，如此重复。
-##alist ->     [49,38  ,65,97,  76,13,  27]
-##first merge     38,49   65,97      13,76   27
-##second merge    38, 49 ,65, 97     13, 27, 76
-##third merge     13, 27 ,38, 49     65, 76, 97
+#demonstration:
+# 将两个或两个以上的有序表组合成一个新的有序表的方法叫归并。
+#假设初始序列含有n个记录，则可看成是n个有序的子序列，每个子序列的长度为1，
+#然后两两归并，得到n/2个长度为2或1的有序子序列；再两两归并，如此重复。
+#alist ->     [49,38  ,65,97,  76,13,  27]
+#first merge     38,49   65,97      13,76   27
+#second merge    38, 49 ,65, 97     13, 27, 76
+#third merge     13, 27 ,38, 49     65, 76, 97
 #
 # Worst time complexity: O(nlogn)
 # Optimal time complexity: O(nlogn)
+# Need one more space of list
 #
 
 from __future__ import print_function
@@ -28,20 +29,23 @@ from __future__ import print_function
 def merge_sort(alist):
     """merge sort stable"""
     n = len(alist)
+    # Recursive return condition
     if n <= 1:
         return alist
-    mid = int(n/2)
 
+    mid = int(n/2)
     # return new sorted left list
     left_list = merge_sort(alist[:mid])
     # return new sorted right list
     right_list = merge_sort(alist[mid:])
 
     # Merge above sorted left and right lists into one new list named result
-    left_p, right_p = 0, 0
-    result = []
-
+    left_p, right_p = 0, 0  # left and right list index starts from 0 
+    result = [] # Save the sorted new list
+    
+    # when left and right list are not empty, move index left_p and right_p
     while left_p < len(left_list) and right_p < len(right_list):
+        # Add mixnimum of left and right list first, finish sorting
         if left_list[left_p] <= right_list[right_p]:
             result.append(left_list[left_p])
             left_p += 1
