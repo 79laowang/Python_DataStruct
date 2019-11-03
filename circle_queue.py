@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 #-------------------------------------------------------------------------------
 # Name:        Circle Queue
@@ -44,7 +43,7 @@ class CircleQueue(object):
     def printQueue(self):
         temp = self.front
         while temp != self.rear:
-            print self.queue[temp],
+            print(self.queue[temp],end=" ")
             temp = (temp + 1) % self.capacity
         print
 
@@ -73,12 +72,12 @@ def main():
         cir_queue.enQueue(i)
     cir_queue.printQueue()
 
-    # delete 5 items from header.0~4
+    # delete 5 items from header：0~4
     print("Delete 5 items of Queue head:")
     for i in range(5):
         cir_queue.deQueue()
     cir_queue.printQueue()
-    # add 8 items to Queue tail.0~7
+    # add 8 items to Queue tail：0~7
     print("Add 8 items to Queue tail:")
     for i in range(8):
         if not cir_queue.full():
@@ -87,4 +86,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
