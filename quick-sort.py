@@ -93,15 +93,19 @@ def quick_sort_pythonic(arr):
     n = len(arr)
     if n < 2:
         return arr
-
+    # 选取基准，随便选哪个都可以，选中间的便于理解
     mid = arr[n // 2]
+    # 定义基准值左右两个数列
     left, right = [], []
+    # 从原始数组中移除基准值
     arr.remove(mid)
     for item in arr:
+        # 大于基准值放右边
         if item >= mid:
             right.append(item)
-        else:
+        else: # 小于基准值放左边
             left.append(item)
+    # 进行递归排序左右两个子列表，最后和基准值一起返回一个排好序的列表
     return quick_sort_pythonic(left) + [mid] + quick_sort_pythonic(right)
 
 
